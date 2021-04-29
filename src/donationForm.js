@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/cjs/Button";
-import Modal from "react-bootstrap/Modal";
+
+import FormModal from "./formModal";
 
 export default function DonationForm(props) {
 	const initialState = {
@@ -18,8 +19,6 @@ export default function DonationForm(props) {
 
 	const [state, setState] = useState(initialState);
 	const [modal, setModal] = useState(false);
-
-	const date = new Date();
 
 	const handleInputChange = e => {
 		setState({
@@ -130,22 +129,10 @@ export default function DonationForm(props) {
 			</Form.Group>
 			<Button type={"submit"}>Submit</Button>
 		</Form>
-		<Modal show={modal} onHide={handleClose}>
-			<Modal.Header closeButton>
-				<Modal.Title>Confirmation</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<p>{`Thank you ${state.name} for your generous donation!`}</p>
-				<p>{`We will charge you ${state.donation}€`} {state.isSubscribed ? "monthly, starting from" : "on"} {`${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`}</p>
-			</Modal.Body>
-			<Modal.Footer>
-				<Button variant="secondary" onClick={handleClose}>
-					Close
-				</Button>
-				<Button variant="primary" onClick={handleSubmit}>
-					Donate
-				</Button>
-			</Modal.Footer>
-		</Modal>
+		<FormModal
+			modal={modal}
+			handleClose={handleClose}
+			handleSubmit={handleSubmit}
+			detail={state}/>
 	</>;
 }
