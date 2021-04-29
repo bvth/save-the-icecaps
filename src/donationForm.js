@@ -10,7 +10,7 @@ export default function DonationForm(props) {
 		address: "",
 		gender: "male",
 		birthday: "",
-		income: "",
+		income: 0,
 		donation: 1,
 		isSubscribed: true,
 		gdpr: true
@@ -81,8 +81,9 @@ export default function DonationForm(props) {
 						<Form.Label>
 							Day of birth
 						</Form.Label>
-						<Form.Control type={"date"} name={"birthday"} value={state.birthday}
-									  onChange={handleInputChange}/>
+						<Form.Control
+							type={"date"} name={"birthday"} value={state.birthday}
+							onChange={handleInputChange}/>
 					</Form.Group>
 				</Col>
 				<Col>
@@ -90,8 +91,9 @@ export default function DonationForm(props) {
 						<Form.Label>
 							Income
 						</Form.Label>
-						<Form.Control type={"number"} name={"income"} value={state.income}
-									  onChange={handleInputChange}/>
+						<Form.Control
+							type={"number"} name={"income"} value={state.income}
+							min={0} onChange={handleInputChange}/>
 					</Form.Group>
 				</Col>
 			</Form.Row>
