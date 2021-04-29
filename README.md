@@ -1,4 +1,4 @@
-#Documentation
+# Documentation
 
 ### index.js
 This contains only the rendering function to render React component to DOM in the provided container. Also, this is the entry point for webpack to start the bundling. To keep this clean, all the development was happened in React component files.
