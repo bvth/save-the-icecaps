@@ -3,8 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/cjs/Button";
 import PropTypes from "prop-types";
 
-;
-
 export default function FormModal({modal, handleClose, handleSubmit, detail}) {
 	const date = new Date();
 
@@ -15,6 +13,12 @@ export default function FormModal({modal, handleClose, handleSubmit, detail}) {
 		<Modal.Body>
 			<p>{`Thank you ${detail.name} for your generous donation!`}</p>
 			<p>{`We will charge you ${detail.donation}€`} {detail.isSubscribed ? "monthly, starting from" : "on"} {`${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`}</p>
+			<p>
+				{detail.isSubscribed ?
+					"Newsletter is coming on the 2nd of every month."
+					: "Newsletter is coming on the next 2nd day."
+				}
+			</p>
 		</Modal.Body>
 		<Modal.Footer>
 			<Button variant="secondary" onClick={handleClose}>
